@@ -14,6 +14,8 @@ namespace CardGames
 			//SwinGame.LoadSoundEffectNamed ("Start", "SwinGameStart.wav");
 			SwinGame.LoadSoundEffectNamed ("Slap", "slap.wav");
 			SwinGame.LoadSoundEffectNamed ("Slap2", "throwknife.wav");
+			SwinGame.LoadFontNamed("GameFont", "Chunkfive.otf", 40);
+
 		}
 
 		/// <summary>
@@ -58,18 +60,22 @@ namespace CardGames
 			Card top = myGame.TopCard;
 			if (top != null)
 			{
-				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.White, 130, 20);
-				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.White, 130, 30);
-				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.White, 130, 40);
-				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 521, 153);
+				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.White, 340, 120);
+				//SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.White, 130, 30);
+				//SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.White, 130, 40);
+
+				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 570, 220);
+
+				SwinGame.DrawText ("" + myGame.Score(0), Color.White,"GameFont", 70, 50);
+				SwinGame.DrawText ("" + myGame.Score (1), Color.White, "GameFont", 758, 50);
 			}
 			else
 			{
-				SwinGame.DrawText ("No card played yet...", Color.WhiteSmoke, 130, 20);
+				SwinGame.DrawText ("Hit space to start ...", Color.WhiteSmoke, 340, 120);
 			}
 
 			// Draw the back of the cards... to represent the deck
-			SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), 52, 155, 153);
+			SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), 52, 200, 220);
 
 			//Draw onto the screen
 			SwinGame.RefreshScreen(60);
